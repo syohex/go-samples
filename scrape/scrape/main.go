@@ -16,6 +16,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "http.Get error: %s", err.Error())
 		os.Exit(1)
 	}
+	defer resp.Body.Close()
 
 	node, err := html.Parse(resp.Body)
 	if err != nil {
